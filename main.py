@@ -16,6 +16,10 @@ app.add_middleware(
 
 app.include_router(api_router, prefix=settings.API_PREFIX)
 
+@app.get("/")
+def read_root():
+    return {"Hello": "World"}
+
 @app.get("/healthcheck")
 async def health_check():
     """Checks if server is active."""

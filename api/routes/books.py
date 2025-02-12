@@ -71,7 +71,3 @@ async def get_book(book_id: int) -> Book:
         )
     return book
 
-@router.get('/')
-def home_page():
-    data = "test change"
-    return data
