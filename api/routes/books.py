@@ -70,3 +70,8 @@ async def get_book(book_id: int) -> Book:
             detail="book not found"
         )
     return book
+
+@router.get('/')
+def home_page():
+    data = "test change"
+    return data
