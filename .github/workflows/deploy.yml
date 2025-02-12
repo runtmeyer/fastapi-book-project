@@ -35,6 +35,6 @@ jobs:
             git reset --hard origin/main
             source env/bin/activate
             pip install --no-cache-dir -r requirements.txt
-            sudo systemctl restart supervisor
+            sudo supervisorctl restart uvicorn:fastapi-uvicorn-0 
           '
 
