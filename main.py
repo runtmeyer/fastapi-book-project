@@ -18,7 +18,7 @@ app.include_router(api_router, prefix=settings.API_PREFIX)
 
 @app.get("/")
 def read_root():
-    return {"testing": "is this still working?"}
+    return {"testing": "extra tests"}
 
 @app.get("/healthcheck")
 async def health_check():
