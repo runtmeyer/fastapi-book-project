@@ -88,21 +88,21 @@ uvicorn main:app --host 0.0.0.0 --port 8000
 CI/CD Workflows
 
 Continuous Integration (CI)
-````
+
 The CI pipeline runs on every pull request to the main branch. 
 It: 
-Runs pytest to execute all tests in the tests/ directory.
-Fails if any test fails.
-Succeeds if all tests pass.
-````
+- Runs pytest to execute all tests in the tests/ directory.
+- Fails if any test fails.
+- Succeeds if all tests pass.
+
 Continuous Deployment (CD)
-```
+
 The CD pipeline runs automatically when changes are merged into the main branch. 
 It: 
-Connects to the EC2 instance via SSH.
-Pulls the latest changes from GitHub.
-Restarts the FastAPI application using Supervisor.
-````
+- Connects to the EC2 instance via SSH.
+- Pulls the latest changes from GitHub.
+- Restarts the FastAPI application using Supervisor.
+
 ## API Endpoints
 
 ### Books
