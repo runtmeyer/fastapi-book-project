@@ -33,6 +33,10 @@ fastapi-book-project/
 │   └── test_books.py       # API endpoint tests
 ├── main.py                 # Application entry point
 ├── requirements.txt        # Project dependencies
+├── .github/
+│   ├── workflows/
+│   │   ├── test.yml          # CI workflow for automated testing
+│   │   ├── deploy.yml          # CD workflow for automated deployment
 └── README.md
 ```
 
@@ -43,6 +47,9 @@ fastapi-book-project/
 - Pydantic
 - pytest
 - uvicorn
+- Supervisor & Nginx (for production hosting)
+- GitHub Actions (CI/CD)
+- AWS EC2 (hosting environment)
 
 ## Installation
 
@@ -56,8 +63,7 @@ cd fastapi-book-project
 2. Create a virtual environment:
 
 ```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+# On Windows: venv\Scripts\activate
 ```
 
 3. Install dependencies:
@@ -71,7 +77,7 @@ pip install -r requirements.txt
 1. Start the server:
 
 ```bash
-uvicorn main:app
+uvicorn main:app --host 0.0.0.0 --port 8000
 ```
 
 2. Access the API documentation:
@@ -79,6 +85,24 @@ uvicorn main:app
 - Swagger UI: http://localhost:8000/docs
 - ReDoc: http://localhost:8000/redoc
 
+CI/CD Workflows
+
+Continuous Integration (CI)
+````
+The CI pipeline runs on every pull request to the main branch. 
+It: 
+Runs pytest to execute all tests in the tests/ directory.
+Fails if any test fails.
+Succeeds if all tests pass.
+````
+Continuous Deployment (CD)
+```
+The CD pipeline runs automatically when changes are merged into the main branch. 
+It: 
+Connects to the EC2 instance via SSH.
+Pulls the latest changes from GitHub.
+Restarts the FastAPI application using Supervisor.
+````
 ## API Endpoints
 
 ### Books
